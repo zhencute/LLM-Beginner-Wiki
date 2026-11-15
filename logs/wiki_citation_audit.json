@@ -1,0 +1,57 @@
+[
+  {
+    "filename": "01_LLM_Basics_ZH.md",
+    "topic": "LLM 基本概念",
+    "source_ids": [
+      "SRC-01"
+    ],
+    "valid_chunk_count": 2,
+    "status": "pending_manual_review"
+  },
+  {
+    "filename": "02_Tokens_ZH.md",
+    "topic": "Token 與文字預測",
+    "source_ids": [
+      "SRC-01"
+    ],
+    "valid_chunk_count": 3,
+    "status": "pending_manual_review"
+  },
+  {
+    "filename": "03_Transformer_ZH.md",
+    "topic": "Transformer 與 Attention",
+    "source_ids": [
+      "SRC-02"
+    ],
+    "valid_chunk_count": 3,
+    "status": "pending_manual_review"
+  },
+  {
+    "filename": "04_Training_ZH.md",
+    "topic": "LLM 模型訓練",
+    "source_ids": [
+      "SRC-03"
+    ],
+    "valid_chunk_count": 3,
+    "status": "pending_manual_review"
+  },
+  {
+    "filename": "05_Prompt_ZH.md",
+    "topic": "LLM 應用與 Prompt Engineering",
+    "source_ids": [
+      "SRC-04",
+      "SRC-05"
+    ],
+    "valid_chunk_count": 3,
+    "status": "pending_manual_review"
+  },
+  {
+    "filename": "06_Limitations_ZH.md",
+    "topic": "LLM 的限制與風險",
+    "source_ids": [
+      "SRC-05"
+    ],
+    "valid_chunk_count": 2,
+    "status": "pending_manual_review"
+  }
+]

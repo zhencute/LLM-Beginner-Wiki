@@ -1,0 +1,254 @@
+[
+  {
+    "topic": "LLM 基本概念",
+    "status": "passed",
+    "results": [
+      {
+        "chunk_id": "SRC-01-C007",
+        "source_id": "SRC-01",
+        "title": "Introduction to Large Language Models",
+        "topic": "LLM 基礎概念",
+        "url": "https://developers.google.com/machine-learning/crash-course/llm",
+        "text": "veral sentences.\nAlthough recurrent neural networks learn more context than N-grams, the amount of useful context recurrent neural networks can intuit is still relatively limited. Recurrent neural networks evaluate information \"token by token.\" In contrast, large language models—the topic of the next section—can evaluate the whole context at once.\nNote that training recurrent neural networks for long contexts is constrained by the vanishing gradient problem.\nExercise: Check your understanding\n- A language model based on 6-grams\n- A language model based on 5-grams",
+        "score": 0.21853161212385366
+      },
+      {
+        "chunk_id": "SRC-01-C002",
+        "source_id": "SRC-01",
+        "title": "Introduction to Large Language Models",
+        "topic": "LLM 基礎概念",
+        "url": "https://developers.google.com/machine-learning/crash-course/llm",
+        "text": "r the emergence of large language models that evaluate the whole context simultaneously.\nWhat is a language model?\nA language model estimates the probability of a token or sequence of tokens occurring within a longer sequence of tokens. A token could be a word, a subword (a subset of a word), or even a single character.\nConsider the following sentence and the token(s) that might complete it:\nWhen I hear rain on my roof, I _______ in my kitchen.\nA language model determines the probabilities of different tokens or sequences of tokens to complete that blank. For example, the following probability table identifies some possible tokens and their probabilities:\n| Probability | Token(s) | \n|---|---|\n| 9.4% | cook soup | \n| 5.2% | warm up a kettle | \n| 3.6% | cower | \n| 2.5% | nap | \n| 2.2% | relax | \nIn some situations, the sequence of tokens could be an entire sentence, paragraph, or even an entire essay.\nAn application can use the probability table to make predictions. The prediction might ",
+        "score": 0.204880552424574
+      },
+      {
+        "chunk_id": "SRC-01-C001",
+        "source_id": "SRC-01",
+        "title": "Introduction to Large Language Models",
+        "topic": "LLM 基礎概念",
+        "url": "https://developers.google.com/machine-learning/crash-course/llm",
+        "text": "Page Summary\n- This module explores language models, which estimate the probability of a token or sequence of tokens occurring within a longer sequence, enabling tasks like text generation, translation, and summarization.\n- Language models utilize context, the surrounding information of a target token, to enhance prediction accuracy, with recurrent neural networks offering more context than traditional N-grams.\n- N-grams are ordered sequences of words used to build language models, with longer N-grams providing more context but potentially encountering sparsity issues.\n- Tokens, the atomic units of language modeling, represent words, subwords, or characters and are crucial for understanding and processing language.\n- While recurrent neural networks improve context understanding compared to N-grams, they have limitations, paving the way for the emergence of large language models that evaluate the whole context simultaneously.\nWhat is a language model?\nA language model estimates the prob",
+        "score": 0.18208543834103563
+      }
+    ],
+    "history": [
+      {
+        "attempt": 1,
+        "query": "What is a large language model?",
+        "total_results": 3,
+        "valid_results": 3,
+        "passed": true
+      }
+    ]
+  },
+  {
+    "topic": "Token 與文字預測",
+    "status": "passed",
+    "results": [
+      {
+        "chunk_id": "SRC-01-C002",
+        "source_id": "SRC-01",
+        "title": "Introduction to Large Language Models",
+        "topic": "LLM 基礎概念",
+        "url": "https://developers.google.com/machine-learning/crash-course/llm",
+        "text": "r the emergence of large language models that evaluate the whole context simultaneously.\nWhat is a language model?\nA language model estimates the probability of a token or sequence of tokens occurring within a longer sequence of tokens. A token could be a word, a subword (a subset of a word), or even a single character.\nConsider the following sentence and the token(s) that might complete it:\nWhen I hear rain on my roof, I _______ in my kitchen.\nA language model determines the probabilities of different tokens or sequences of tokens to complete that blank. For example, the following probability table identifies some possible tokens and their probabilities:\n| Probability | Token(s) | \n|---|---|\n| 9.4% | cook soup | \n| 5.2% | warm up a kettle | \n| 3.6% | cower | \n| 2.5% | nap | \n| 2.2% | relax | \nIn some situations, the sequence of tokens could be an entire sentence, paragraph, or even an entire essay.\nAn application can use the probability table to make predictions. The prediction might ",
+        "score": 0.173690721424349
+      },
+      {
+        "chunk_id": "SRC-01-C001",
+        "source_id": "SRC-01",
+        "title": "Introduction to Large Language Models",
+        "topic": "LLM 基礎概念",
+        "url": "https://developers.google.com/machine-learning/crash-course/llm",
+        "text": "Page Summary\n- This module explores language models, which estimate the probability of a token or sequence of tokens occurring within a longer sequence, enabling tasks like text generation, translation, and summarization.\n- Language models utilize context, the surrounding information of a target token, to enhance prediction accuracy, with recurrent neural networks offering more context than traditional N-grams.\n- N-grams are ordered sequences of words used to build language models, with longer N-grams providing more context but potentially encountering sparsity issues.\n- Tokens, the atomic units of language modeling, represent words, subwords, or characters and are crucial for understanding and processing language.\n- While recurrent neural networks improve context understanding compared to N-grams, they have limitations, paving the way for the emergence of large language models that evaluate the whole context simultaneously.\nWhat is a language model?\nA language model estimates the prob",
+        "score": 0.08148620537678662
+      },
+      {
+        "chunk_id": "SRC-05-C009",
+        "source_id": "SRC-05",
+        "title": "LLM Fundamentals",
+        "topic": "LLM 應用與限制",
+        "url": "https://learn.microsoft.com/en-us/agent-framework/journey/llm-fundamentals",
+        "text": "xt token.\n- This repeats until the model produces a stop token or reaches a length limit.\nThis iterative process means that conceptually, the model considers the entire token sequence for every token it generates. This is why LLMs have a fixed context window â a maximum number of tokens the model can handle. Everything must fit: your prompt, the conversation history, any injected context, and the tokens the model is generating as its response.\nTip\nIn practice, modern LLM inference engines use optimizations like KV-cache â caching intermediate computations from previously processed tokens so that each new token doesn't require reprocessing the full sequence from scratch. This is why generating the first token (the \"prefill\" phase, which processes all input tokens) takes longer than generating subsequent tokens (the \"decode\" phase, which processes one token at a time using the cache).\nContext window (e.g., 128K tokens)\nââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ\nâ System  ",
+        "score": 0.06802749733341015
+      }
+    ],
+    "history": [
+      {
+        "attempt": 1,
+        "query": "What are tokens and next token prediction?",
+        "total_results": 3,
+        "valid_results": 3,
+        "passed": true
+      }
+    ]
+  },
+  {
+    "topic": "Transformer 與 Attention",
+    "status": "passed",
+    "results": [
+      {
+        "chunk_id": "SRC-02-C003",
+        "source_id": "SRC-02",
+        "title": "LLMs and Transformers",
+        "topic": "Transformer 與 Attention",
+        "url": "https://developers.google.com/machine-learning/crash-course/llm/transformers",
+        "text": "useful text. A decoder is also an enormous neural net.\nFor example, in a translator:\n- The encoder processes the input text (for example, an English sentence) into some intermediate representation.\n- The decoder converts that intermediate representation into output text (for example, the equivalent French sentence).\nWhat is self-attention?\nTo enhance context, Transformers rely heavily on a concept called self-attention. Effectively, on behalf of each token of input, self-attention asks the following question:\n\"How much does each other token of input affect the interpretation of this token?\"\nThe \"self\" in \"self-attention\" refers to the input sequence. Some attention mechanisms weigh relations of input tokens to tokens in an output sequence like a translation or to tokens in some other sequence. But self-attention only weighs the importance of relations between tokens in the input sequence.\nTo simplify matters, assume that each token is a word and the complete context is only a single se",
+        "score": 0.2565688320918064
+      },
+      {
+        "chunk_id": "SRC-02-C006",
+        "source_id": "SRC-02",
+        "title": "LLMs and Transformers",
+        "topic": "Transformer 與 Attention",
+        "url": "https://developers.google.com/machine-learning/crash-course/llm/transformers",
+        "text": "ecially useful for generating representations of whole sequences, while applications that generate sequences token-by-token require unidirectional self-attention. For this reason, encoders use bidirectional self-attention, while decoders use unidirectional.\nWhat is multi-head multi-layer self-attention?\nEach self-attention layer is typically comprised of multiple self-attention heads. The output of a layer is a mathematical operation (for example, weighted average or dot product) of the output of the different heads.\nSince the parameters of each head are initialized to random values, different heads can learn different relationships between each word being attended to and the nearby words. For example, the self-attention head described in the previous section focused on determining which noun the pronoun it referred to. However, other self-attention heads within the same layer might learn the grammatical relevance of each word to every other word, or learn other interactions.\nA complet",
+        "score": 0.24206061008137184
+      },
+      {
+        "chunk_id": "SRC-02-C005",
+        "source_id": "SRC-02",
+        "title": "LLMs and Transformers",
+        "topic": "Transformer 與 Attention",
+        "url": "https://developers.google.com/machine-learning/crash-course/llm/transformers",
+        "text": "pronoun it. That is, animal is more important than street to the pronoun it.\nConversely, suppose the final word in the sentence changes as follows:\nThe animal didn't cross the street because it was too wide.\nIn this revised sentence, self-attention would hopefully rate street as more relevant than animal to the pronoun it.\nSome self-attention mechanisms are bidirectional, meaning that they calculate relevance scores for tokens preceding and following the word being attended to. For example, in Figure 3, notice that words on both sides of it are examined. So, a bidirectional self-attention mechanism can gather context from words on either side of the word being attended to. By contrast, a unidirectional self-attention mechanism can only gather context from words on one side of the word being attended to. Bidirectional self-attention is especially useful for generating representations of whole sequences, while applications that generate sequences token-by-token require unidirectional sel",
+        "score": 0.22066578828064268
+      }
+    ],
+    "history": [
+      {
+        "attempt": 1,
+        "query": "How does transformer self attention work?",
+        "total_results": 3,
+        "valid_results": 3,
+        "passed": true
+      }
+    ]
+  },
+  {
+    "topic": "LLM 模型訓練",
+    "status": "passed",
+    "results": [
+      {
+        "chunk_id": "SRC-04-C028",
+        "source_id": "SRC-04",
+        "title": "Prompt Engineering Techniques",
+        "topic": "Prompt Engineering",
+        "url": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/prompt-engineering",
+        "text": "to fact-check this? --- QUERIES | 1. \"John Smith Microsoft\" - To check if John Smith is indeed employed at Microsoft. 2. \"John Smith Lucy Smith\" - To check if John Smith is married to Lucy Smith. 3. \"John Smith children\" - To check if John Smith has five children. | \nIf you're not sure what syntax to use, consider using Markdown or XML. The models have been trained on a large quantity web content in XML and Markdown, which might provide better results.\nBreak the task down\nLarge language models (LLMs) often perform better if the task is broken down into smaller steps. For example, in the search query prompt referenced earlier, the prompt can be restructured so that the model is first instructed to extract relevant facts, and then instructed to generate search queries that can be used to verify those facts.\n| System message | User | Assistant | \n|---|---|---|\n| You're an AI assistant that helps people find information. | You'll read a paragraph, and then issue queries to a search engine ",
+        "score": 0.15079566037990427
+      },
+      {
+        "chunk_id": "SRC-01-C007",
+        "source_id": "SRC-01",
+        "title": "Introduction to Large Language Models",
+        "topic": "LLM 基礎概念",
+        "url": "https://developers.google.com/machine-learning/crash-course/llm",
+        "text": "veral sentences.\nAlthough recurrent neural networks learn more context than N-grams, the amount of useful context recurrent neural networks can intuit is still relatively limited. Recurrent neural networks evaluate information \"token by token.\" In contrast, large language models—the topic of the next section—can evaluate the whole context at once.\nNote that training recurrent neural networks for long contexts is constrained by the vanishing gradient problem.\nExercise: Check your understanding\n- A language model based on 6-grams\n- A language model based on 5-grams",
+        "score": 0.14847383672894202
+      },
+      {
+        "chunk_id": "SRC-01-C001",
+        "source_id": "SRC-01",
+        "title": "Introduction to Large Language Models",
+        "topic": "LLM 基礎概念",
+        "url": "https://developers.google.com/machine-learning/crash-course/llm",
+        "text": "Page Summary\n- This module explores language models, which estimate the probability of a token or sequence of tokens occurring within a longer sequence, enabling tasks like text generation, translation, and summarization.\n- Language models utilize context, the surrounding information of a target token, to enhance prediction accuracy, with recurrent neural networks offering more context than traditional N-grams.\n- N-grams are ordered sequences of words used to build language models, with longer N-grams providing more context but potentially encountering sparsity issues.\n- Tokens, the atomic units of language modeling, represent words, subwords, or characters and are crucial for understanding and processing language.\n- While recurrent neural networks improve context understanding compared to N-grams, they have limitations, paving the way for the emergence of large language models that evaluate the whole context simultaneously.\nWhat is a language model?\nA language model estimates the prob",
+        "score": 0.1451876264720553
+      }
+    ],
+    "history": [
+      {
+        "attempt": 1,
+        "query": "How are large language models trained?",
+        "total_results": 3,
+        "valid_results": 3,
+        "passed": true
+      }
+    ]
+  },
+  {
+    "topic": "LLM 應用與 Prompt Engineering",
+    "status": "passed",
+    "results": [
+      {
+        "chunk_id": "SRC-04-C047",
+        "source_id": "SRC-04",
+        "title": "Prompt Engineering Techniques",
+        "topic": "Prompt Engineering",
+        "url": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/prompt-engineering",
+        "text": "word, on the other hand, are typically treated as part of the same token as the word. Carefully watch your usage of white space and don't use punctuation when a space alone will do.",
+        "score": 0.12525341953549537
+      },
+      {
+        "chunk_id": "SRC-04-C017",
+        "source_id": "SRC-04",
+        "title": "Prompt Engineering Techniques",
+        "topic": "Prompt Engineering",
+        "url": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/prompt-engineering",
+        "text": "rom our leaders about cross group priorities and learnings for the year ahead. The invitation to this event has already been sent to everyone in [â¦] My Important Topics: prompt engineering, search, GPT models Summarize the workshops above, grouped by my important topics: | 1. Prompt Engineering: - New prompt engineering tips - The art of prompt engineering 2. Search: -Intro to vector search with embedding 3. GPT Models: - Intro to GPT-4 - GPT-35-Turbo in-depth. | \nScenario-specific guidance\nThe techniques in this section teach you strategies for increasing the accuracy and grounding of responses you generate with a large language model (LLM). However, it's important to remember that even when you use prompt engineering effectively, you still need to validate the responses the models generate. Just because a carefully crafted prompt worked well for a particular scenario doesn't necessarily mean it will generalize more broadly to certain use cases. Understanding the limitations of LLMs ",
+        "score": 0.10486725272043726
+      },
+      {
+        "chunk_id": "SRC-05-C020",
+        "source_id": "SRC-05",
+        "title": "LLM Fundamentals",
+        "topic": "LLM 應用與限制",
+        "url": "https://learn.microsoft.com/en-us/agent-framework/journey/llm-fundamentals",
+        "text": "ng capability gets wired into a full execution loop â where an agent iteratively calls tools, observes results, and decides what to do next â is the bridge from LLMs to agents, covered in the next page.\nHow this connects to agents\nAn LLM alone is a powerful but limited text-in, text-out system. To build useful applications, you need to add layers on top:\n| Need | LLM alone | With Agent Framework | \n|---|---|---|\n| Focused behavior | Craft system prompts manually | Agent with instructions and identity | \n| Real-time data | Not available | Tools (function tools, MCP servers) | \n| Take actions | Not possible | Tool calling with approval workflows | \n| Memory | Re-send conversation each time | Sessions and context providers | \n| Reliability | Hope the prompt works | Middleware for guardrails and overrides | \nAgent Framework handles these layers so you can focus on your application logic rather than re-building LLM infrastructure.\nLearn more\n- What are Large Language Models (LLMs)? â Micros",
+        "score": 0.07698613127604222
+      }
+    ],
+    "history": [
+      {
+        "attempt": 1,
+        "query": "Prompt engineering and LLM applications",
+        "total_results": 3,
+        "valid_results": 3,
+        "passed": true
+      }
+    ]
+  },
+  {
+    "topic": "LLM 的限制與風險",
+    "status": "passed",
+    "results": [
+      {
+        "chunk_id": "SRC-05-C014",
+        "source_id": "SRC-05",
+        "title": "LLM Fundamentals",
+        "topic": "LLM 應用與限制",
+        "url": "https://learn.microsoft.com/en-us/agent-framework/journey/llm-fundamentals",
+        "text": "ge, transcribing speech, or analyzing visual content\n- Structured output â generating responses in precise formats like JSON or XML, which is essential for tool calling, data extraction, and integration with downstream systems\nTip\nMultimodal capabilities work because images, audio, and other modalities can also be converted into tokens â just like text. Specialized encoders transform these inputs into token sequences that the model processes alongside text tokens in the same context window. The fundamental mechanism remains the same: everything is tokens.\nWhat LLMs struggle with\nUnderstanding LLM limitations is critical for building reliable agents:\n| Limitation | What it means for your agent | \n|---|---|\n| No real-time knowledge | The model's training data has a cutoff date. It doesn't know about events after training. | \n| Hallucinations | LLMs can generate confident but factually incorrect responses. They \"dream\" plausible-sounding text rather than retrieving verified facts. | \n| No",
+        "score": 0.11195174495344212
+      },
+      {
+        "chunk_id": "SRC-03-C008",
+        "source_id": "SRC-03",
+        "title": "What Is LLM Training?",
+        "topic": "模型訓練",
+        "url": "https://www.ibm.com/think/topics/llm-training",
+        "text": "d after fine-tuning, but alignment and safety modifications might still be necessary, which brings us to the last stage of training.\nPost-training focuses on aligning model behavior with human preferences, safety requirements and application-specific limitations. While pre-training teaches the model the structure of language, alignment teaches it how to respond. This stage also helps reduce hallucinations where the model generates incorrect or fabricated information.\nOne widely used approach is reinforcement learning from human feedback (RLHF). In this approach, humans compare model outputs and express preferences. A reward model is trained on these preferences and directs further LLM optimization. Improvements in helpfulness, instruction-following, and safety often result from alignment rather than extended pre-training.\nAlignment is not a one-time step. As models are deployed and used in real-world settings, new failure modes emerge. Post-training is hence a continuous process, tight",
+        "score": 0.10561739555565192
+      },
+      {
+        "chunk_id": "SRC-04-C018",
+        "source_id": "SRC-04",
+        "title": "Prompt Engineering Techniques",
+        "topic": "Prompt Engineering",
+        "url": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/prompt-engineering",
+        "text": "d well for a particular scenario doesn't necessarily mean it will generalize more broadly to certain use cases. Understanding the limitations of LLMs is just as important as understanding how to leverage their strengths.\nThis guide doesn't go in-depth into the mechanics behind the message structure for Chat Completions. If you aren't familiar with interacting with Chat Completions models programmatically, we recommend reading our how-to guide on the Chat Completion API first.\nNote\nAll of the examples in this section of the guide were tested against a base GPT-4 model in English. Some techniques may produce different results with newer models like gpt-4.1, and gpt-4.5. If you're reading a localized version of this article in another language, these responses represent a localized translation of the English results. To learn more about potential limitations depending on what language you're using to prompt a model, consult our Responsible AI transparency note.\nFew-shot learning\nA common ",
+        "score": 0.06419281055580675
+      }
+    ],
+    "history": [
+      {
+        "attempt": 1,
+        "query": "LLM hallucinations and limitations",
+        "total_results": 3,
+        "valid_results": 3,
+        "passed": true
+      }
+    ]
+  }
+]

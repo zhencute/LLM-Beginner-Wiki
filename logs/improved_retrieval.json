@@ -1,0 +1,200 @@
+[
+  {
+    "topic": "LLM 基本概念",
+    "status": "needs_manual_review",
+    "results": [
+      {
+        "chunk_id": "SRC-01-C005",
+        "source_id": "SRC-01",
+        "title": "Introduction to Large Language Models",
+        "url": "https://developers.google.com/machine-learning/crash-course/llm",
+        "text": "Similarly, the punchline of a long joke makes you laugh because you can remember the context from the joke's setup. In language models, context is helpful information before or after the target token. Context can help a language model determine whether \"orange\" refers to a citrus fruit or a color. Context can help a language model make better predictions, but does a 3-gram provide sufficient context? Unfortunately, the only context a 3-gram provides is the first two words. For example, the two words orange is doesn't provide enough context for the language model to predict the third word. Due to lack of context, language models based on 3-grams make a lot of mistakes. Longer N-grams would certainly provide more context than shorter N-grams. However, as N grows, the relative occurrence of each instance decreases. When N becomes very large, the language model typically has only a single instance of each occurrence of N tokens, which isn't very helpful in predicting the target token.",
+        "score": 0.17617225502351747
+      },
+      {
+        "chunk_id": "SRC-05-C001",
+        "source_id": "SRC-05",
+        "title": "LLM Fundamentals",
+        "url": "https://learn.microsoft.com/en-us/agent-framework/journey/llm-fundamentals",
+        "text": "Note Access to this page requires authorization. You can try signing in or changing directories. Access to this page requires authorization. You can try changing directories. Before building AI agents, it helps to understand the technology that powers them: large language models (LLMs). This page gives you a developer-oriented overview of what LLMs are, how they work, what they're good at, and where they fall short â so you can make informed decisions as you build agents on top of them. Tip If you're already comfortable with LLMs and want to jump straight into building, skip ahead to From LLMs to Agents. What is an LLM? A large language model is a neural network trained on massive amounts of text data to predict the next token in a sequence. Through this simple training objective â given all the previous tokens, what comes next? â the model learns language structure and world knowledge. At its core, an LLM is just two things:",
+        "score": 0.16100508695244123
+      },
+      {
+        "chunk_id": "SRC-01-C001",
+        "source_id": "SRC-01",
+        "title": "Introduction to Large Language Models",
+        "url": "https://developers.google.com/machine-learning/crash-course/llm",
+        "text": "Page Summary - This module explores language models, which estimate the probability of a token or sequence of tokens occurring within a longer sequence, enabling tasks like text generation, translation, and summarization. - Language models utilize context, the surrounding information of a target token, to enhance prediction accuracy, with recurrent neural networks offering more context than traditional N-grams. - N-grams are ordered sequences of words used to build language models, with longer N-grams providing more context but potentially encountering sparsity issues. - Tokens, the atomic units of language modeling, represent words, subwords, or characters and are crucial for understanding and processing language. - While recurrent neural networks improve context understanding compared to N-grams, they have limitations, paving the way for the emergence of large language models that evaluate the whole context simultaneously. What is a language model?",
+        "score": 0.13221056409616558
+      }
+    ],
+    "history": [
+      {
+        "attempt": 1,
+        "query": "What is a large language model?",
+        "matches": 8
+      }
+    ]
+  },
+  {
+    "topic": "Token 與文字預測",
+    "status": "needs_manual_review",
+    "results": [
+      {
+        "chunk_id": "SRC-01-C001",
+        "source_id": "SRC-01",
+        "title": "Introduction to Large Language Models",
+        "url": "https://developers.google.com/machine-learning/crash-course/llm",
+        "text": "Page Summary - This module explores language models, which estimate the probability of a token or sequence of tokens occurring within a longer sequence, enabling tasks like text generation, translation, and summarization. - Language models utilize context, the surrounding information of a target token, to enhance prediction accuracy, with recurrent neural networks offering more context than traditional N-grams. - N-grams are ordered sequences of words used to build language models, with longer N-grams providing more context but potentially encountering sparsity issues. - Tokens, the atomic units of language modeling, represent words, subwords, or characters and are crucial for understanding and processing language. - While recurrent neural networks improve context understanding compared to N-grams, they have limitations, paving the way for the emergence of large language models that evaluate the whole context simultaneously. What is a language model?",
+        "score": 0.194766836591988
+      },
+      {
+        "chunk_id": "SRC-01-C005",
+        "source_id": "SRC-01",
+        "title": "Introduction to Large Language Models",
+        "url": "https://developers.google.com/machine-learning/crash-course/llm",
+        "text": "Similarly, the punchline of a long joke makes you laugh because you can remember the context from the joke's setup. In language models, context is helpful information before or after the target token. Context can help a language model determine whether \"orange\" refers to a citrus fruit or a color. Context can help a language model make better predictions, but does a 3-gram provide sufficient context? Unfortunately, the only context a 3-gram provides is the first two words. For example, the two words orange is doesn't provide enough context for the language model to predict the third word. Due to lack of context, language models based on 3-grams make a lot of mistakes. Longer N-grams would certainly provide more context than shorter N-grams. However, as N grows, the relative occurrence of each instance decreases. When N becomes very large, the language model typically has only a single instance of each occurrence of N tokens, which isn't very helpful in predicting the target token.",
+        "score": 0.15833910607588392
+      },
+      {
+        "chunk_id": "SRC-01-C003",
+        "source_id": "SRC-01",
+        "title": "Introduction to Large Language Models",
+        "url": "https://developers.google.com/machine-learning/crash-course/llm",
+        "text": "The prediction might be the highest probability (for example, \"cook soup\") or a random selection from tokens having a probability greater than a certain threshold. Estimating the probability of what fills in the blank in a text sequence can be extended to more complex tasks, including: - Generating text. - Translating text from one language to another. - Summarizing documents. By modeling the statistical patterns of tokens, modern language models develop extremely powerful internal representations of language and can generate plausible language. N-gram language models N-grams are ordered sequences of words used to build language models, where N is the number of words in the sequence. For example, when N is 2, the N-gram is called a 2-gram (or a bigram); when N is 5, the N-gram is called a 5-gram. Given the following phrase in a training document: you are very nice The resulting 2-grams are as follows: - you are - are very - very nice",
+        "score": 0.15106459345512746
+      }
+    ],
+    "history": [
+      {
+        "attempt": 1,
+        "query": "What is a token in language models?",
+        "matches": 12
+      }
+    ]
+  },
+  {
+    "topic": "Transformer 與 Attention",
+    "status": "needs_manual_review",
+    "results": [
+      {
+        "chunk_id": "SRC-02-C005",
+        "source_id": "SRC-02",
+        "title": "LLMs and Transformers",
+        "url": "https://developers.google.com/machine-learning/crash-course/llm/transformers",
+        "text": "Some self-attention mechanisms are bidirectional, meaning that they calculate relevance scores for tokens preceding and following the word being attended to. For example, in Figure 3, notice that words on both sides of it are examined. So, a bidirectional self-attention mechanism can gather context from words on either side of the word being attended to. By contrast, a unidirectional self-attention mechanism can only gather context from words on one side of the word being attended to. Bidirectional self-attention is especially useful for generating representations of whole sequences, while applications that generate sequences token-by-token require unidirectional self-attention. For this reason, encoders use bidirectional self-attention, while decoders use unidirectional. What is multi-head multi-layer self-attention? Each self-attention layer is typically comprised of multiple self-attention heads.",
+        "score": 0.3547136397344404
+      },
+      {
+        "chunk_id": "SRC-02-C003",
+        "source_id": "SRC-02",
+        "title": "LLMs and Transformers",
+        "url": "https://developers.google.com/machine-learning/crash-course/llm/transformers",
+        "text": "- The decoder converts that intermediate representation into output text (for example, the equivalent French sentence). What is self-attention? To enhance context, Transformers rely heavily on a concept called self-attention. Effectively, on behalf of each token of input, self-attention asks the following question: \"How much does each other token of input affect the interpretation of this token?\" The \"self\" in \"self-attention\" refers to the input sequence. Some attention mechanisms weigh relations of input tokens to tokens in an output sequence like a translation or to tokens in some other sequence. But self-attention only weighs the importance of relations between tokens in the input sequence. To simplify matters, assume that each token is a word and the complete context is only a single sentence. Consider the following sentence: The animal didn't cross the street because it was too tired. The preceding sentence contains eleven words.",
+        "score": 0.31266030463219446
+      },
+      {
+        "chunk_id": "SRC-02-C006",
+        "source_id": "SRC-02",
+        "title": "LLMs and Transformers",
+        "url": "https://developers.google.com/machine-learning/crash-course/llm/transformers",
+        "text": "The output of a layer is a mathematical operation (for example, weighted average or dot product) of the output of the different heads. Since the parameters of each head are initialized to random values, different heads can learn different relationships between each word being attended to and the nearby words. For example, the self-attention head described in the previous section focused on determining which noun the pronoun it referred to. However, other self-attention heads within the same layer might learn the grammatical relevance of each word to every other word, or learn other interactions. A complete transformer model stacks multiple self-attention layers on top of one another. The output from the previous layer becomes the input for the next. This stacking allows the model to build progressively more complex and abstract understandings of the text.",
+        "score": 0.2538141727821495
+      }
+    ],
+    "history": [
+      {
+        "attempt": 1,
+        "query": "What is self-attention?",
+        "matches": 5
+      }
+    ]
+  },
+  {
+    "topic": "LLM 模型訓練",
+    "status": "needs_manual_review",
+    "results": [
+      {
+        "chunk_id": "SRC-03-C001",
+        "source_id": "SRC-03",
+        "title": "What Is LLM Training?",
+        "url": "https://www.ibm.com/think/topics/llm-training",
+        "text": "LLM training is the process of teaching a neural network to model and generate human language. During this process, the model’s parameters are progressively updated through optimization algorithms to improve the model’s ability to predict the next token in a sequence. Large language models (LLMs) have become foundational to modern AI systems, powering applications such as chatbots, code assistants, search and enterprise knowledge tools. Interfaces like ChatGPT built on models like GPT-4 show how LLMs support real-time interaction, summarization and reasoning across a wide range of natural language processing (NLP) tasks. They are typically built on transformer architectures, a deep learning design that enables models to process long‑range language patterns. As systems trained on vast amounts of text, they can model patterns, semantics and reasoning in language. While many teams interact with LLMs through APIs, few understand how to actually train one.",
+        "score": 0.1157368496271639
+      },
+      {
+        "chunk_id": "SRC-03-C004",
+        "source_id": "SRC-03",
+        "title": "What Is LLM Training?",
+        "url": "https://www.ibm.com/think/topics/llm-training",
+        "text": "Pre-training is also resource intensive as it requires extensive computational infrastructure, long training times, and careful optimization. Hence, instead of creating their own models, most teams depend on pretrained models or open source models such as IBM Granite® and LLaMA. The output of this phase is a general-purpose language model but not yet specialized for particular use cases. Once a model is pretrained, it can be fine-tuned for a specific domain or task. Fine-tuning LLMs adapts them to unique use cases such as customer service queries, specific domain vocabulary, coding tasks, or enterprise- specific knowledge. Instead of learning language from scratch, the model modifies its existing parameters through small but high-quality training datasets as it already understands general language and helps achieve specialization at a lower cost. There are various approaches for fine-tuning. Once trained, a model can be fine‑tuned for a specific domain or task.",
+        "score": 0.052936355505694296
+      }
+    ],
+    "history": [
+      {
+        "attempt": 1,
+        "query": "How are large language models trained?",
+        "matches": 2
+      }
+    ]
+  },
+  {
+    "topic": "LLM 應用與 Prompt Engineering",
+    "status": "needs_manual_review",
+    "results": [
+      {
+        "chunk_id": "SRC-04-C004",
+        "source_id": "SRC-04",
+        "title": "Prompt Engineering Techniques",
+        "url": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/prompt-engineering",
+        "text": "It's also important to understand that while there could be other valid ways to dissect prompts, the goal of this breakdown is to provide a relatively simple way to think about prompt construction. With the Completion API, all the components are optional, but at least one must be present and most prompts include more than one component. There can be some grey area between components as well. The order presented in the following section roughly corresponds to how commonly each component is used, from most to least. Instructions Instructions are likely the most commonly used prompt component. Instructions are simply that: instructions to the model on what to do. While simple in concept, they can be complex in practice. The following table illustrates this complexity by showing both simple and more complex instructions, in two different forms. | Instruction Type | Prompt | Completion | |---|---|---| | Simple instructions | Write an introduction for a weekly newsletter.",
+        "score": 0.09342473783351445
+      },
+      {
+        "chunk_id": "SRC-04-C039",
+        "source_id": "SRC-04",
+        "title": "Prompt Engineering Techniques",
+        "url": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/prompt-engineering",
+        "text": "A higher value, for example 0.7 makes the output more random and produce more divergent responses, while a lower value, like. 0.2, makes the output more focused and concrete. A fictional story could be generated using a higher temperature. Whereas to generate a legal document it's recommended to use a much lower temperature. Top_probability is another parameter and is similar to Temperature in that it also controls the randomness of the model response, but it does so in a different way. The general recommendation is to alter one of these two parameters at a time, not both. Provide grounding context One of the most effective ways to provide reliable answers is to give the model data to draw its responses from (grounding data). If your use case relies on up-to-date, reliable information and isn't purely a creative scenario, we strongly recommend providing grounding data.",
+        "score": 0.055264420630337804
+      },
+      {
+        "chunk_id": "SRC-04-C002",
+        "source_id": "SRC-04",
+        "title": "Prompt Engineering Techniques",
+        "url": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/prompt-engineering",
+        "text": "Text prompts are how users interact with GPT models. As with all generative language models, GPT models attempt to produce the next series of words that are most likely to follow from the previous text. It's as if we're saying What is the first thing that comes to your mind when I say <prompt>? The examples below demonstrate this behavior. Given the first words of famous content, the model is able to accurately continue the text. | Prompt | Completion | |---|---| | Four score and seven years ago our | fathers brought forth on this continent, a new nation, conceived in Liberty, and dedicated to the proposition that all men are created equal. [â¦] | | \"Call me Ishmael.\" | \"Some years agoânever mind how long preciselyâhaving little or no money in my purse, and nothing particular to interest me on shore, I thought I would sail about a little and see the watery part of the world.\" [â¦] | As you develop more complex prompts, it's helpful to keep this fundamental behavior in mind.",
+        "score": 0.05079515333907025
+      }
+    ],
+    "history": [
+      {
+        "attempt": 1,
+        "query": "How to write effective prompts?",
+        "matches": 3
+      }
+    ]
+  },
+  {
+    "topic": "LLM 的限制與風險",
+    "status": "needs_manual_review",
+    "results": [
+      {
+        "chunk_id": "SRC-05-C013",
+        "source_id": "SRC-05",
+        "title": "LLM Fundamentals",
+        "url": "https://learn.microsoft.com/en-us/agent-framework/journey/llm-fundamentals",
+        "text": "Multimodal capabilities work because images, audio, and other modalities can also be converted into tokens â just like text. Specialized encoders transform these inputs into token sequences that the model processes alongside text tokens in the same context window. The fundamental mechanism remains the same: everything is tokens. What LLMs struggle with Understanding LLM limitations is critical for building reliable agents: | Limitation | What it means for your agent | |---|---| | No real-time knowledge | The model's training data has a cutoff date. It doesn't know about events after training. | | Hallucinations | LLMs can generate confident but factually incorrect responses. They \"dream\" plausible-sounding text rather than retrieving verified facts. | | No persistent memory | Each API call is stateless. The model doesn't remember previous conversations unless you include them in the context window. |",
+        "score": 0.1233772264341741
+      }
+    ],
+    "history": [
+      {
+        "attempt": 1,
+        "query": "What are LLM limitations?",
+        "matches": 1
+      }
+    ]
+  }
+]
