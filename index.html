@@ -1,0 +1,327 @@
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>大型語言模型 LLM 入門</title>
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    font-family: "Microsoft JhengHei", "Noto Sans TC", sans-serif;
+    background: #0b1020;
+    color: #f3f4ff;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 5%;
+    color: #b8bde0;
+    font-size: 14px;
+}
+
+.logo {
+    color: #b7a7ff;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.progress {
+    height: 5px;
+    background: #252945;
+}
+
+#progress-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #8b5cf6, #38bdf8);
+    transition: width .3s;
+}
+
+main {
+    max-width: 1050px;
+    min-height: 70vh;
+    margin: 35px auto 10px;
+    padding: 40px 55px;
+    border: 1px solid #303653;
+    border-radius: 24px;
+    background: linear-gradient(145deg, #171e35, #101629);
+    box-shadow: 0 20px 60px #0005;
+}
+
+.kicker {
+    color: #a99aff;
+    font-size: 14px;
+    letter-spacing: 2px;
+}
+
+h1 {
+    font-size: clamp(29px, 4vw, 48px);
+    margin: 20px 0;
+    line-height: 1.3;
+}
+
+h2 { font-size: 25px; }
+h3 { color: #c8bbff; margin-top: 30px; }
+
+p {
+    font-size: 18px;
+    line-height: 1.9;
+    color: #dde2f4;
+}
+
+.content-card {
+    background: #212a46;
+    padding: 24px;
+    margin: 22px 0;
+    border-radius: 16px;
+    border: 1px solid #394362;
+}
+
+.section-label {
+    color: #a99aff;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.hero { text-align: center; padding: 45px 0; }
+
+.hero-icon {
+    display: grid;
+    place-items: center;
+    width: 120px;
+    height: 120px;
+    border-radius: 30px;
+    background: linear-gradient(135deg, #7648e9, #269aca);
+    font-size: 50px;
+    font-weight: bold;
+    margin: auto;
+}
+
+.tiles {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin: 25px 0;
+}
+
+.tiles > div {
+    background: #212a46;
+    padding: 25px;
+    border-radius: 15px;
+    font-size: 25px;
+}
+
+.tiles strong, .tiles span, .steps span {
+    display: block;
+    margin-top: 12px;
+}
+
+.tiles strong { font-size: 20px; }
+.tiles span, .steps span {
+    color: #bec8de;
+    font-size: 16px;
+}
+
+.steps {
+    display: grid;
+    gap: 12px;
+}
+
+.steps > div {
+    padding: 18px;
+    background: #212a46;
+    border-left: 4px solid #a78bfa;
+    border-radius: 10px;
+}
+
+.tip {
+    background: #30274d;
+    padding: 20px;
+    border-radius: 12px;
+    margin-top: 24px;
+    line-height: 1.8;
+}
+
+.citation {
+    border-top: 1px solid #394362;
+    margin-top: 30px;
+    padding-top: 15px;
+    color: #b8c2df;
+    font-size: 13px;
+}
+
+a {
+    color: #97d5ff;
+    overflow-wrap: anywhere;
+    margin-right: 10px;
+}
+
+.small { color: #aab5d1; font-size: 13px; }
+
+button {
+    background: #7655dc;
+    border: 0;
+    border-radius: 10px;
+    color: white;
+    padding: 13px 22px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 5px;
+}
+
+button:hover { background: #9474ff; }
+button:disabled { opacity: .35; cursor: default; }
+
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    padding: 25px;
+}
+
+.option {
+    display: block;
+    width: 100%;
+    text-align: left;
+    background: #333e60;
+    margin: 10px 0;
+}
+
+#quiz-feedback { color: #c9b7ff; }
+
+@media(max-width: 700px) {
+    main {
+        padding: 25px 20px;
+        margin: 12px;
+    }
+    .tiles { grid-template-columns: 1fr; }
+    p { font-size: 16px; }
+    header { padding: 15px; }
+}
+</style>
+</head>
+
+<body>
+<header>
+    <div class="logo">LLM BEGINNER WIKI</div>
+    <div id="counter">1 / 12</div>
+</header>
+
+<div class="progress">
+    <div id="progress-fill"></div>
+</div>
+
+<main>
+    <div id="subtitle" class="kicker"></div>
+    <h1 id="title"></h1>
+    <div id="slide-content"></div>
+</main>
+
+<div class="controls">
+    <button id="prev" onclick="changeSlide(-1)">上一頁</button>
+    <button id="next" onclick="changeSlide(1)">下一頁</button>
+</div>
+
+<script>
+const slides = [{"title": "大型語言模型 LLM 入門", "subtitle": "從基本概念、運作原理到實際應用", "content": "\n    <div class=\"hero\">\n      <div class=\"hero-icon\">AI<\/div>\n      <h2>認識生成式 AI 背後的語言技術<\/h2>\n      <p>利用 LLM Wiki 知識庫製作的互動式教學簡報<\/p>\n    <\/div>\n    "}, {"title": "什麼是 LLM？", "subtitle": "01 / 基本概念", "content": "\n    <div class=\"content-card\">\n        <div class=\"section-label\">什麼是大型語言模型？<\/div>\n        <p>大型語言模型（Large Language Model，LLM）是一種透過大量資料訓練的語言模型，能根據輸入的上下文產生文字。<\/p>\n    <\/div>\n    <h3>生活化例子<\/h3><p>例如，當使用者輸入「請幫我整理這篇文章」，LLM 可以根據提供的文章內容產生摘要。<\/p><div class=\"citation\">Wiki 資料來源：<a href=\"https://developers.google.com/machine-learning/crash-course/llm\" target=\"_blank\" rel=\"noopener noreferrer\">Introduction to Large Language Models<\/a><\/div>"}, {"title": "什麼是 Token？", "subtitle": "02 / 文字的處理單位", "content": "\n    <div class=\"content-card\">\n        <div class=\"section-label\">Token 與文字預測<\/div>\n        <p>Token 是語言模型處理文字時使用的基本單位，可能是一個字、單字、部分單字或其他文字片段。<\/p>\n    <\/div>\n    <h3>為什麼需要 Token？<\/h3><p>語言模型會利用上下文估計下一個 Token 出現的可能性，再逐步產生文字。實際切分方式會依 Tokenizer 而不同。<\/p><div class=\"citation\">Wiki 資料來源：<a href=\"https://developers.google.com/machine-learning/crash-course/llm\" target=\"_blank\" rel=\"noopener noreferrer\">Introduction to Large Language Models<\/a><\/div>"}, {"title": "LLM 如何預測文字？", "subtitle": "03 / 互動示範", "content": "<p>語言模型會利用上下文估計下一個 Token 出現的可能性，再逐步產生文字。實際切分方式會依 Tokenizer 而不同。<\/p>\n    <div class=\"content-card\">\n      <h3>今天的天氣很……<\/h3>\n      <p id=\"prediction\">點擊按鈕，觀看文字預測示例。<\/p>\n      <button onclick=\"predictText()\">產生示例文字<\/button>\n      <p class=\"small\">此為預先設定的教學示範，\n      並非真實模型即時運算。<\/p>\n    <\/div>\n    <div class=\"citation\">Wiki 資料來源：<a href=\"https://developers.google.com/machine-learning/crash-course/llm\" target=\"_blank\" rel=\"noopener noreferrer\">Introduction to Large Language Models<\/a><\/div>"}, {"title": "Transformer 與 Attention", "subtitle": "04 / 模型如何利用上下文", "content": "\n    <div class=\"content-card\">\n        <div class=\"section-label\">Transformer 與 Attention<\/div>\n        <p>Transformer 是現代大型語言模型常使用的一種神經網路架構。<\/p>\n    <\/div>\n    <h3>Self-Attention 是什麼？<\/h3><p>Self-Attention（自注意力）機制可以協助模型衡量不同 Token 之間的關聯，進而利用上下文處理語言資訊。<\/p><h3>生活化例子<\/h3><p>例如「小明把書交給小華，因為他要離開」，模型需要參考句子中的其他詞語，判斷「他」可能指的是誰。此例用於說明上下文關聯，並非保證能正確判斷。<\/p><div class=\"citation\">Wiki 資料來源：<a href=\"https://developers.google.com/machine-learning/crash-course/llm/transformers\" target=\"_blank\" rel=\"noopener noreferrer\">LLMs and Transformers<\/a><\/div>"}, {"title": "LLM 如何訓練？", "subtitle": "05 / 從資料到模型", "content": "\n    <div class=\"steps\">\n      <div><strong>① 預訓練<\/strong><span>學習廣泛的語言模式<\/span><\/div>\n      <div><strong>② 微調<\/strong><span>適應特定任務或領域<\/span><\/div>\n      <div><strong>③ 後訓練<\/strong><span>依需求調整模型行為<\/span><\/div>\n    <\/div>\n    <p>預訓練（Pre-training）讓模型學習廣泛的語言模式。微調（Fine-tuning）則可使用特定資料，讓模型更適合某些任務。部分模型還會經過其他後訓練程序。<\/p><p>例如，模型先透過一般文字資料進行預訓練，之後再透過特定領域資料微調，使其更適合處理該領域的任務。<\/p><div class=\"citation\">Wiki 資料來源：<a href=\"https://www.ibm.com/think/topics/llm-training\" target=\"_blank\" rel=\"noopener noreferrer\">What Is LLM Training?<\/a><\/div>"}, {"title": "LLM 的常見應用", "subtitle": "06 / 生活與學習", "content": "\n    <div class=\"tiles\">\n      <div>📝<strong>文字摘要<\/strong><span>整理文章重點<\/span><\/div>\n      <div>🌐<strong>語言翻譯<\/strong><span>轉換不同語言<\/span><\/div>\n      <div>💬<strong>問答輔助<\/strong><span>回答使用者問題<\/span><\/div>\n      <div>📋<strong>文字處理<\/strong><span>整理與改寫內容<\/span><\/div>\n    <\/div>\n    <p>良好的 Prompt 可以提供明確的任務、必要背景、限制條件與期望的輸出格式。LLM 常被應用於文字摘要、翻譯與問答等工作。<\/p><div class=\"citation\">Wiki 資料來源：<a href=\"https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/prompt-engineering\" target=\"_blank\" rel=\"noopener noreferrer\">Prompt Engineering Techniques<\/a><a href=\"https://learn.microsoft.com/en-us/agent-framework/journey/llm-fundamentals\" target=\"_blank\" rel=\"noopener noreferrer\">LLM Fundamentals<\/a><\/div>"}, {"title": "Prompt Engineering", "subtitle": "07 / 如何讓 AI 理解你的需求", "content": "\n    <div class=\"content-card\">\n        <div class=\"section-label\">LLM 應用與 Prompt Engineering<\/div>\n        <p>Prompt Engineering（提示工程）是設計與改善輸入指令的方法，目的是讓模型更清楚理解任務需求。<\/p>\n    <\/div>\n    <h3>好的 Prompt 有什麼不同？<\/h3><p>較模糊的提問：「幫我整理文章。」較清楚的提問：「請將這篇文章整理成三個重點，使用繁體中文，每點不超過50字。」<\/p><div class=\"tip\">提示：清楚描述任務、背景、限制與輸出格式。<\/div><div class=\"citation\">Wiki 資料來源：<a href=\"https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/prompt-engineering\" target=\"_blank\" rel=\"noopener noreferrer\">Prompt Engineering Techniques<\/a><a href=\"https://learn.microsoft.com/en-us/agent-framework/journey/llm-fundamentals\" target=\"_blank\" rel=\"noopener noreferrer\">LLM Fundamentals<\/a><\/div>"}, {"title": "LLM 的限制與風險", "subtitle": "08 / 為什麼需要查證？", "content": "\n    <div class=\"content-card\">\n        <div class=\"section-label\">LLM 的限制與風險<\/div>\n        <p>大型語言模型雖然能產生流暢文字，但生成結果不一定正確。<\/p>\n    <\/div>\n    <p>常見限制包括幻覺（Hallucination）、資訊可能過時，以及回答內容需要查證。模型可能產生看似合理但實際錯誤的資訊。<\/p><h3>實際例子<\/h3><p>例如，詢問 AI 某篇論文的作者與出版年份時，模型可能提供錯誤資訊。應回到論文原始資料確認。<\/p><div class=\"citation\">Wiki 資料來源：<a href=\"https://learn.microsoft.com/en-us/agent-framework/journey/llm-fundamentals\" target=\"_blank\" rel=\"noopener noreferrer\">LLM Fundamentals<\/a><\/div>"}, {"title": "互動知識測驗", "subtitle": "09 / 檢查你的學習成果", "content": "\n    <div class=\"content-card\">\n      <h3 id=\"quiz-question\"><\/h3>\n      <div id=\"quiz-options\"><\/div>\n      <p id=\"quiz-feedback\"><\/p>\n      <button onclick=\"nextQuestion()\">下一題<\/button>\n    <\/div>\n    "}, {"title": "課程重點整理", "subtitle": "10 / 今天學到了什麼？", "content": "\n    <div class=\"tiles\">\n      <div><strong>LLM<\/strong><span>根據上下文產生文字<\/span><\/div>\n      <div><strong>Token<\/strong><span>模型處理文字的單位<\/span><\/div>\n      <div><strong>Transformer<\/strong><span>利用注意力處理上下文<\/span><\/div>\n      <div><strong>Prompt<\/strong><span>清楚表達任務需求<\/span><\/div>\n    <\/div>\n    <div class=\"tip\">LLM 很實用，但重要資訊仍需要查證。<\/div>\n    "}, {"title": "參考資料", "subtitle": "11 / LLM Wiki 的知識來源", "content": "<div class=\"content-card\"><p><a href=\"https://developers.google.com/machine-learning/crash-course/llm\" target=\"_blank\" rel=\"noopener noreferrer\">Introduction to Large Language Models<\/a><\/p><p><a href=\"https://developers.google.com/machine-learning/crash-course/llm/transformers\" target=\"_blank\" rel=\"noopener noreferrer\">LLMs and Transformers<\/a><\/p><p><a href=\"https://www.ibm.com/think/topics/llm-training\" target=\"_blank\" rel=\"noopener noreferrer\">What Is LLM Training?<\/a><\/p><p><a href=\"https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/prompt-engineering\" target=\"_blank\" rel=\"noopener noreferrer\">Prompt Engineering Techniques<\/a><\/p><p><a href=\"https://learn.microsoft.com/en-us/agent-framework/journey/llm-fundamentals\" target=\"_blank\" rel=\"noopener noreferrer\">LLM Fundamentals<\/a><\/p><\/div><p class=\"small\">本簡報由六篇繁體中文 Wiki 教學初稿整理而成，並保留原始文章連結。<\/p>"}];
+let current = 0;
+
+function render() {
+    const slide = slides[current];
+    document.getElementById("title").textContent = slide.title;
+    document.getElementById("subtitle").textContent = slide.subtitle;
+    document.getElementById("slide-content").innerHTML = slide.content;
+
+    document.getElementById("counter").textContent =
+        (current + 1) + " / " + slides.length;
+
+    document.getElementById("progress-fill").style.width =
+        ((current + 1) / slides.length * 100) + "%";
+
+    document.getElementById("prev").disabled = current === 0;
+    document.getElementById("next").disabled =
+        current === slides.length - 1;
+
+    if (current === 9) showQuestion();
+}
+
+function changeSlide(step) {
+    current = Math.max(0, Math.min(slides.length - 1, current + step));
+    render();
+    window.scrollTo(0, 0);
+}
+
+document.addEventListener("keydown", function(e) {
+    if (e.key === "ArrowRight") changeSlide(1);
+    if (e.key === "ArrowLeft") changeSlide(-1);
+});
+
+const predictions = ["好", "冷", "熱", "舒服"];
+let predictionIndex = 0;
+
+function predictText() {
+    const word = predictions[predictionIndex % predictions.length];
+    predictionIndex++;
+    document.getElementById("prediction").textContent =
+        "今天的天氣很" + word + "。";
+}
+
+const questions = [
+    {
+        q: "LLM 主要是根據什麼產生文字？",
+        options: ["上下文與學到的模式", "隨機查詢網頁", "固定答案表"],
+        answer: 0,
+        why: "LLM 會依據上下文及學到的模式預測 Token。"
+    },
+    {
+        q: "Transformer 中的 Self-Attention 主要有何作用？",
+        options: ["控制螢幕亮度", "衡量 Token 之間的關聯", "刪除所有文字"],
+        answer: 1,
+        why: "Self-Attention 協助模型利用上下文資訊。"
+    },
+    {
+        q: "使用 LLM 時，哪種做法比較適當？",
+        options: ["所有回答都直接相信", "不需要檢查來源", "重要資訊應另外查證"],
+        answer: 2,
+        why: "模型可能產生幻覺或過時資訊。"
+    }
+];
+
+let quizIndex = 0;
+
+function showQuestion() {
+    const item = questions[quizIndex];
+    document.getElementById("quiz-question").textContent =
+        (quizIndex + 1) + ". " + item.q;
+
+    document.getElementById("quiz-feedback").textContent = "";
+
+    document.getElementById("quiz-options").innerHTML =
+        item.options.map((option, i) =>
+            '<button class="option" onclick="answerQuestion(' + i + ')">' +
+            option + '</button>'
+        ).join("");
+}
+
+function answerQuestion(index) {
+    const item = questions[quizIndex];
+    document.getElementById("quiz-feedback").textContent =
+        (index === item.answer ? "✅ 答對了！ " : "❌ 再複習一下。 ") +
+        item.why;
+}
+
+function nextQuestion() {
+    quizIndex = (quizIndex + 1) % questions.length;
+    showQuestion();
+}
+
+render();
+</script>
+</body>
+</html>
